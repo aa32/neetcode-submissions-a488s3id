@@ -1,0 +1,38 @@
+#nums[i] + nums[j] = -nums[k]
+
+class Solution:
+    def threeSum(self, nums: List[int]) -> List[List[int]]:
+        nums = sorted(nums) #Sorting O(NlogN)
+        res=[]
+        for i in range(len(nums)):
+            if i>0 and nums[i]==nums[i-1]:
+                continue
+            
+            compl= 0-nums[i]
+            if i==len(nums)-1:
+                return res
+            left = i+1
+            right=len(nums)-1
+            while(left<right):
+                if nums[left]+nums[right]>compl:
+                    right-=1
+                elif nums[left]+nums[right]<compl:
+                    left+=1
+                else:
+                    res.append([nums[i],nums[left],nums[right]])
+                    left+=1
+                    while(left<right and nums[left]==nums[left-1]):
+                        left+=1
+
+
+        return res
+
+
+
+
+
+
+
+
+
+        
